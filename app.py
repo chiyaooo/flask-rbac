@@ -24,10 +24,6 @@ dbname = os.environ.get('DBNAME')
 conn = "mysql+pymysql://{0}:{1}@{2}/{3}".format(dbuser, dbpass, dbhost, dbname)
 
 app = Flask(__name__)
-app.config['SECRET_KEY']='SuperSecretKey'
-app.config['SQLALCHEMY_DATABASE_URI'] = conn
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False # silence the deprecation warning
-db = SQLAlchemy(app)
 
 login = LoginManager(app)
 login.login_view = 'login'
