@@ -34,7 +34,7 @@ login.login_view = 'login'
 login.login_message_category = 'danger' # sets flash category for the default message 'Please log in to access this page.'
 
 
-#app.config['SECRET_KEY']='SuperSecretKey'
+app.config['SECRET_KEY']='SuperSecretKey'
 # import os
 # = os.environ.get('SECRET_KEY')
 
@@ -47,9 +47,9 @@ class SQLAlchemy(_BaseSQLAlchemy):
 # <-- MWC
 
 
-#app.config['SQLALCHEMY_DATABASE_URI'] = conn
-#app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False # silence the deprecation warning
-#db = SQLAlchemy(app)
+app.config['SQLALCHEMY_DATABASE_URI'] = conn
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False # silence the deprecation warning
+db = SQLAlchemy(app)
 
 
 class LoginForm(FlaskForm):
