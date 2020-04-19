@@ -16,14 +16,18 @@ import os
 #conn = "mysql+pymysql://{0}:{1}@{2}/{3}".format(secrets.dbuser, secrets.dbpass, secrets.dbhost, secrets.dbname)
 
 # Open database connection
-dbhost = secrets.dbhost
-dbuser = secrets.dbuser
-dbpass = secrets.dbpass
-dbname = secrets.dbname
+dbuser = os.environ.get('DBUSER')
+dbpass = os.environ.get('DBPASS')
+dbhost = os.environ.get('DBHOST')
+dbname = os.environ.get('DBNAME')
 
-db = pymysql.connect(dbhost, dbuser, dbpass, dbname)
+conn = "mysql+pymysql://{0}:{1}@{2}/{3}".format(dbuser, dbpass, dbhost, dbname)
 
 app = Flask(__name__)
+app.config['SECRET_KEY']='SuperSecretKey'
+app.config['SQLALCHEMY_DATABASE_URI'] = conn
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False # silence the deprecation warning
+db = SQLAlchemy(app)
 
 login = LoginManager(app)
 login.login_view = 'login'
