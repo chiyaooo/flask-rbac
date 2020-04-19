@@ -47,9 +47,9 @@ class SQLAlchemy(_BaseSQLAlchemy):
 # <-- MWC
 
 
-app.config['SQLALCHEMY_DATABASE_URI'] = conn
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False # silence the deprecation warning
-db = SQLAlchemy(app)
+#app.config['SQLALCHEMY_DATABASE_URI'] = conn
+#app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False # silence the deprecation warning
+#db = SQLAlchemy(app)
 
 
 class LoginForm(FlaskForm):
